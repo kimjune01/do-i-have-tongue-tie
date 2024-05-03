@@ -226,6 +226,23 @@ const RomTable = ({ gradesMap, caption }: { gradesMap: any[], caption: string })
     </TableBody>
   </Table >
 
+const PhotoTable = ({ label, baselineImageSrc, imageSrc }:
+  { label: string, baselineImageSrc: string, imageSrc: string }) =>
+  <Table className="w-96">
+    <TableHeader>
+      <TableRow>
+        <TableHead>Baseline</TableHead>
+        <TableHead>{label}</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow >
+        <TableCell><img className="w-48" src={baselineImageSrc} alt="wideopen" /></TableCell>
+        <TableCell ><img className="w-48" src={imageSrc} alt={label}></img></TableCell>
+      </TableRow>
+    </TableBody>
+  </Table >
+
 const ResultsStep = ({ onNext, pics }: { onNext: any, pics: PhotoCollection }) => {
   const screenRef = createRef<HTMLDivElement>();
 
@@ -245,24 +262,22 @@ const ResultsStep = ({ onNext, pics }: { onNext: any, pics: PhotoCollection }) =
   return (<>
     <div className="text-3xl">Results</div>
     <div ref={screenRef} className="justify-center">
-      <div className="flex-row py-12">
-        <div>Wide open</div>
-        {pics.wideopen && <img src={pics.wideopen} alt="wideopen" />}
+      <div className="py-6"></div>
+      <div className="flex-row py-4">
+        <div className="text-xl">Anterior range of motion</div>
       </div>
       <RomTable gradesMap={anteriorGrades} caption="Compare with photo below to get your grade"></RomTable>
-      <div className="flex-row py-12">
-        <div>Anterior ROM</div>
-        {pics.anterior && <img src={pics.anterior} alt="anterior" />}
+      <PhotoTable label="Anterior" baselineImageSrc={pics.wideopen} imageSrc={pics.anterior} />
+      <div className="py-6"></div>
+      <div className="flex-row py-4">
+        <div className="text-xl">Posterior range of motion</div>
       </div>
       <RomTable gradesMap={posteriorGrades} caption="Compare with photo below to get your grade"></RomTable>
-      <div className="flex-row py-12">
-        <div>Posterior ROM</div>
-        {pics.posterior && <img src={pics.posterior} alt="posterior" />}
-      </div>
+      <PhotoTable label="Posterior" baselineImageSrc={pics.wideopen} imageSrc={pics.posterior} />
       <div className="w-96 py-8">There are more dimensions to a complete tongue tie assessment, described in this <a target="_blank" className="text-cyan-700" href="https://www.youtube.com/watch?v=8dOq11N-qK8">long Youtube video</a>.</div>
       <div className="text-xl">What does this mean?</div>
       <div className="w-96 py-2">If your tongue movement is restricted, then it may be interfering with your posture or your upper airway. If you are developing obstructive sleep apnea, this is especially relevant.</div>
-      <div className="py-8"></div>
+      <div className="py-6"></div>
       <div className="text-xl">What can I do?</div>
       <div className="w-96 py-2">To the best of our knowledge, a combination of myofunctional therapy and frenuloplasty (tongue tie release surgery) can improve your tongue ROM.</div>
       <div className="py-8"></div>

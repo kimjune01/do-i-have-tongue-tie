@@ -318,7 +318,7 @@ const CroppedCanvas = ({ screenshot, setCropped }: { screenshot: string, setCrop
     if (!canvas || !ctx) { return }
     //wait for the image to finish loading
     originalImage.addEventListener('load', () => {
-      const cropPortion = 0.25
+      const cropPortion = 0.3
       const oldWidth = originalImage.width
       const oldHeight = originalImage.height
       const newSize = Math.max(oldWidth * cropPortion, oldHeight * cropPortion)

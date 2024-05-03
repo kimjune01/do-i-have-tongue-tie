@@ -70,7 +70,7 @@ const EducationStep = ({ onNext }: { onNext: any }) => <>
 const WideOpenPrimerStep = ({ onNext }: { onNext: any }) => <>
   <div className="text-3xl">What is Tongue Tie?</div>
   <img className="max-w-96" src="/images/wideopenblack.png" alt="wideopenblack"></img>
-  <div className="text-lg min-w-min max-w-96">The first step is to measure the distance between your upper and lower teeth when your mouth is wide open. Open your mouth as wide as possible. It will take a picture using your camera.</div>
+  <div className="text-lg min-w-min max-w-96">The first step is to measure the distance between your upper and lower teeth when your mouth is wide open. Open your mouth as wide as you can without pain or discomfort. It will take a picture using your camera.</div>
   <Button className="" onClick={onNext}>Allow Camera Access</Button>
 </>
 
@@ -127,7 +127,7 @@ const PhotoCaptureStep = ({ titleText, instructionText, photoLabel, onNext, addP
 const AnteriorPrimerStep = ({ onNext }: { onNext: any }) => <>
   <div className="text-3xl">Anterior Tongue Range of Motion</div>
   <img className="max-w-96" src="/images/tipup.png" alt="tipup"></img>
-  <div className="text-lg min-w-min max-w-96">While keeping your mouth wide open, raise the tip of your tongue as high as possible without moving the jaw.</div>
+  <div className="text-lg min-w-min max-w-96">While keeping your mouth wide open, raise the tip of your tongue to behind your upper teeth without pain or discomfort.</div>
   <Button className="" onClick={onNext}>Next</Button>
 </>
 
@@ -146,7 +146,7 @@ const PosteriorPrimerStep = ({ onNext }: { onNext: any }) => <>
     title="Suction Hold"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
   ></iframe>
-  <div className="text-lg min-w-min max-w-96">The suction hold is a bit tricky. The video helps explain how to do it. While keeping the suction hold, open your jaw as low as it goes.</div>
+  <div className="text-lg min-w-min max-w-96">The suction hold is a bit tricky. The video helps explain. Lift and suction the entire tongue up to the palate and open your mouth as wide as you can without pain or discomfort.</div>
   <Button className="" onClick={onNext}>Next</Button>
 </>
 

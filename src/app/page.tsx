@@ -6,6 +6,8 @@ import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, Tabl
 import { createRef, useCallback, useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import { useScreenshot, createFileName } from "use-react-screenshot";
+import { Analytics } from "@vercel/analytics/react"
+import { track } from '@vercel/analytics';
 
 type PhotoCollection = {
   [key: string]: any
@@ -15,6 +17,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-12" >
       <ComponentForStep />
+      <Analytics />
     </main>
   );
 }
@@ -155,7 +158,10 @@ const PosteriorPhotoStep = ({ onNext, addPhoto }: { onNext: any, addPhoto: any }
     titleText="PosteriorPhotoStep"
     instructionText="How low you can drop your jaw indicates the posterior range of motion ratio"
     photoLabel="posterior"
-    onNext={onNext}
+    onNext={() => {
+      onNext()
+      track('Result');
+    }}
     addPhoto={addPhoto} />
 
 
@@ -256,6 +262,8 @@ const ResultsStep = ({ onNext, pics }: { onNext: any, pics: PhotoCollection }) =
     a.href = img;
     a.download = createFileName("jpg", "result");
     a.click();
+    track('Download');
+
   };
 
   const downloadScreenshot = () => takeScreenShot(screenRef.current).then(download);
